@@ -24,8 +24,8 @@ Nasceu no site da Alna (`site-alna`, rota `/admin/etiquetas`). Este repositório
    Escala = `min((100−2)/w, (150−2)/h)` (1 mm de folga branca por lado), centralizado. Para etiquetas de 89,2 × 148,7 mm a escala é ≈ 0,995 (praticamente 1:1).
 3. **Validar antes de entregar**: nenhuma etiqueta < 80 pt (elemento perdido = erro); todas com tamanho parecido (±10 % da mediana);
    páginas rotacionadas são recusadas; nº de páginas = nº de etiquetas; cada página 100 × 150 mm.
-4. **Interface** (`src/etiquetas-page.tsx`): tudo no navegador do dono (nada vai para a internet); pdf.js e pdf-lib só são carregados nessa página,
-   então a loja não ganha nenhum KB.
+4. **Interface** (`src/main.ts` + `index.html`): projeto independente (Vite + TypeScript), tudo no navegador (nada vai para a internet);
+   não depende do site-alna.
 
 ## Exemplo e testes
 `tests/fixtures/etiquetas-3-mais-1.pdf`: Mercado Livre Full (Envio 78813954), A4 paisagem, **3 etiquetas na página 1 + 1 na página 2**
@@ -44,4 +44,12 @@ Rodar: `bun test tests/label-organizer.test.ts` (precisa de `pdf-lib`, `pdfjs-di
 
 ## Pendências / ideias
 - Testar com etiquetas de outros marketplaces (Shopee, Correios, Melhor Envio) e com 2×2 por folha.
-- Tela ainda não testada no navegador logado do admin (build e testes passaram).
+- Tela testada só até o início do processamento no navegador de teste (painel oculto trava o pdf.js); testar com o PDF real numa janela aberta.
+
+## Rodar
+```
+bun install
+bun run dev      # abre a ferramenta em http://localhost:5173
+bun test         # testes com o PDF de exemplo
+bun run build    # gera dist/ (site estático, pode ser hospedado em qualquer lugar)
+```

@@ -1,0 +1,22 @@
+{
+  "name": "etiqueta100x150",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "pdf-lib": "1.17.1",
+    "pdfjs-dist": "^6.4.299"
+  },
+  "devDependencies": {
+    "@napi-rs/canvas": "^1.0.10",
+    "@types/bun": "latest",
+    "typescript": "^5.8.3",
+    "vite": "^7.0.0"
+  }
+}

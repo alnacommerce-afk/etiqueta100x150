@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Organizador de Etiquetas PDF</title>
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <main>
+    <h1>Organizador de Etiquetas PDF</h1>
+    <p class="sub">
+      Envie o PDF com as etiquetas (uma ou várias por folha). Devolvo um PDF com uma etiqueta por página,
+      em 100 × 150 mm, na mesma ordem. É só recorte: nada é redesenhado. O arquivo é processado no seu
+      computador e não é enviado para a internet.
+    </p>
+    <div id="drop">
+      <p>Arraste o PDF aqui</p>
+      <input id="file" type="file" accept="application/pdf" hidden />
+      <button id="pick" type="button">ENVIAR PDF</button>
+    </div>
+    <div id="status" aria-live="polite"></div>
+  </main>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

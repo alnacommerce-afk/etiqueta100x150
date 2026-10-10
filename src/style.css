@@ -1,0 +1,13 @@
+:root { font-family: system-ui, "Segoe UI", Arial, sans-serif; color: #1c1c1c; }
+body { margin: 0; background: #fff; }
+main { max-width: 600px; margin: 48px auto; padding: 0 16px; }
+h1 { font-size: 24px; margin: 0 0 6px; }
+.sub { color: #555; font-size: 14px; line-height: 1.5; margin: 0 0 20px; }
+#drop { border: 2px dashed #999; border-radius: 12px; padding: 40px 16px; text-align: center; background: #fafafa; }
+#drop.over { border-color: #0a7; background: #effaf5; }
+#drop p { margin: 0 0 14px; color: #555; font-size: 14px; }
+button, a.dl { display: inline-block; padding: 12px 22px; border: 0; border-radius: 8px; background: #0a7; color: #fff;
+  font: 600 14px system-ui, sans-serif; cursor: pointer; text-decoration: none; }
+button:disabled { opacity: .5; cursor: wait; }
+#status { margin-top: 22px; font-size: 14px; }
+.err { color: #c22; } .busy { color: #555; } .ok { font-weight: 600; margin: 0 0 12px; }

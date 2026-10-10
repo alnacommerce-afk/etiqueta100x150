@@ -10,8 +10,8 @@ import {
   OUT_W,
   detectBoxes,
   organizeLabels,
-} from "../src/lib/admin/label-organizer";
-import { createPdfjsRenderer } from "../src/lib/admin/label-organizer-render";
+} from "../src/label-organizer";
+import { createPdfjsRenderer } from "../src/label-organizer-render";
 
 const fixture = new Uint8Array(readFileSync("tests/fixtures/etiquetas-3-mais-1.pdf"));
 
