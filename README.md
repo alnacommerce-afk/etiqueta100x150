@@ -53,3 +53,7 @@ bun run dev      # abre a ferramenta em http://localhost:5173
 bun test         # testes com o PDF de exemplo
 bun run build    # gera dist/ (site estático, pode ser hospedado em qualquer lugar)
 ```
+
+## Atalho no Windows
+`Abrir-Etiquetas.bat` liga a ferramenta e abre o navegador sozinho (duplo clique). Há um atalho "Etiquetas 100x150" na Área de Trabalho apontando para ele.
+Fechar a janela preta desliga a ferramenta.
