@@ -184,6 +184,13 @@ def extrair(pdf: Path) -> Resultado:
         res.erros.append("Nenhum produto encontrado no PDF.")
     if res.total_produtos_doc is not None and res.total_produtos_doc != len(res.produtos):
         res.erros.append(f"Divergência: o PDF informa {res.total_produtos_doc} produtos, mas foram extraídos {len(res.produtos)}.")
+    vistos: dict[str, int] = {}
+    for p in res.produtos:  # Código ML é único; SKU pode repetir (anúncios diferentes), então não é checado
+        if p.codigo_ml:
+            if p.codigo_ml in vistos:
+                res.erros.append(f"Código ML repetido: {p.codigo_ml} aparece nos produtos {vistos[p.codigo_ml]} e {p.posicao}.")
+            else:
+                vistos[p.codigo_ml] = p.posicao
     soma = sum(p.quantidade or 0 for p in res.produtos)
     if res.total_unidades_doc is not None and res.total_unidades_doc != soma:
         res.erros.append(f"Divergência: o PDF informa {res.total_unidades_doc} unidades, mas a soma das quantidades extraídas é {soma}.")

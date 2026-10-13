@@ -145,6 +145,17 @@ class TestExtracao(unittest.TestCase):
         res = ex.extrair(self._pdf(total_prod=14))
         self.assertTrue(any("14 produtos" in e for e in res.erros))
 
+    def test_codigo_ml_repetido_e_erro(self):
+        linhas = list(ESPERADO)
+        linhas[4] = ("EHAO37040", 40, "COLHER-MAD-30-3")  # repete o Código ML do produto 1
+        res = ex.extrair(self._pdf(linhas=linhas))
+        self.assertFalse(res.completo)
+        self.assertTrue(any("Código ML repetido: EHAO37040" in e and "1 e 5" in e for e in res.erros))
+
+    def test_sku_repetido_nao_gera_erro(self):
+        res = ex.extrair(self._pdf())
+        self.assertFalse(any("repetido" in e for e in res.erros))
+
     def test_pdf_inexistente(self):
         self.assertEqual(ex.main([str(self.dir / "nao_existe.pdf")]), 2)
 

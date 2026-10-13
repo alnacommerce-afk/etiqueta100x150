@@ -20,7 +20,7 @@ Exit code: `0` = OK; `1` = INCOMPLETO (o arquivo sai com sufixo `_INCOMPLETA.xls
 ## Regras (prioridade máxima: fidelidade)
 
 - Nunca inventar, completar, deduzir ou corrigir Código ML, SKU ou quantidade. Nunca usar título/descrição para adivinhar SKU. Não confundir Código ML, código universal e SKU.
-- Excel com exatamente 3 colunas, nesta ordem: `Código ML | quantidade | SKU`; uma planilha, cabeçalho na linha 1, uma linha por produto, ordem original, sem totais/descrição/extras; quantidade inteira; códigos/SKUs como texto, idênticos ao PDF. Não eliminar duplicados (mesmo SKU com Códigos ML diferentes é normal).
+- Excel com exatamente 3 colunas, nesta ordem: `Código ML | quantidade | SKU`; uma planilha, cabeçalho na linha 1, uma linha por produto, ordem original, sem totais/descrição/extras; quantidade inteira; códigos/SKUs como texto, idênticos ao PDF. Não eliminar linhas: o **SKU pode se repetir** (são anúncios diferentes com o mesmo SKU), mas o **Código ML não pode** — Código ML repetido gera ERRO (arquivo `_INCOMPLETA`) e deve ser avisado ao usuário antes de entregar o resultado.
 - A quantidade é associada ao produto pela **posição** (coluna UNIDADES × faixa vertical da linha), nunca por ordem do texto bruto — no PDF real a ordem do texto não coincide com a da tabela.
 - Os totais ("Produtos do envio" e "Total de unidades") vêm do próprio PDF e são comparados com o extraído. Divergência = erro a investigar; **nunca** ajustar números para fechar a conta.
 
