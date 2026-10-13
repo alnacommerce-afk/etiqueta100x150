@@ -57,3 +57,14 @@ bun run build    # gera dist/ (site estático, pode ser hospedado em qualquer lu
 ## Atalho no Windows
 `Abrir-Etiquetas.bat` liga a ferramenta e abre o navegador sozinho (duplo clique). Há um atalho "Etiquetas 100x150" na Área de Trabalho apontando para ele.
 Fechar a janela preta desliga a ferramenta.
+
+## Skill: extrair-etiquetas-ml (PDF de preparação do Mercado Livre → Excel)
+Skill do Claude Code em `.claude/skills/extrair-etiquetas-ml/`. Ao receber um PDF "Lista de produtos e instruções de preparação"
+(ex.: `Inbound-79427953-preparation-instructions.pdf`), gera um `.xlsx` com as colunas `Código ML | quantidade | SKU`, na ordem do PDF.
+- **Instalar:** `pip install -r .claude/skills/extrair-etiquetas-ml/requirements.txt` (pymupdf, openpyxl; OCR opcional exige Tesseract).
+- **Acionar:** no Claude Code, abrindo este repositório, basta enviar o PDF (a skill dispara pela descrição) ou pedir `/extrair-etiquetas-ml`.
+- **Rodar direto:** `python .claude/skills/extrair-etiquetas-ml/scripts/extrair_etiquetas_ml.py arquivo.pdf [-o saida.xlsx]`
+- **Garantias:** nada é inventado; quantidade é ligada ao produto pelas coordenadas da tabela; compara com os totais do PDF; reabre o .xlsx e confere.
+  Falha ou divergência → arquivo `_INCOMPLETA.xlsx` e exit code 1.
+- **Testes:** `python -m unittest discover -s .claude/skills/extrair-etiquetas-ml/tests -v` (usam PDF sintético; o PDF real não fica no Git).
+- **Limites:** o caminho OCR (páginas escaneadas) não foi testado aqui por falta do Tesseract; layouts muito diferentes do modelo "Código ML / SKU / UNIDADES" caem em INCOMPLETO em vez de chutar.
